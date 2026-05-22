@@ -214,12 +214,12 @@ class _InventoryScreenState extends State<InventoryScreen> {
                 segments: const <ButtonSegment<String>>[
                   ButtonSegment<String>(
                     value: 'IN',
-                    label: Text('Stock IN (Restock)'),
+                    label: Text('Stock IN'),
                     icon: Icon(Icons.arrow_downward, color: const Color(0xFF10B981)),
                   ),
                   ButtonSegment<String>(
                     value: 'OUT',
-                    label: Text('Stock OUT (Loss/Edit)'),
+                    label: Text('Stock OUT'),
                     icon: Icon(Icons.arrow_upward, color: Colors.red),
                   ),
                 ],

@@ -146,22 +146,29 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
                     // Metrics row (Cost, Sale, Profit)
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        _buildDetailMetric(
-                          'Purchase Cost',
-                          currencyFormatter.format(product.purchasePrice),
-                          isDark ? Colors.blueGrey[400]! : Colors.blueGrey[600]!,
+                        Expanded(
+                          child: _buildDetailMetric(
+                            'Purchase Cost',
+                            currencyFormatter.format(product.purchasePrice),
+                            isDark ? Colors.blueGrey[400]! : Colors.blueGrey[600]!,
+                          ),
                         ),
-                        _buildDetailMetric(
-                          'Selling Price',
-                          currencyFormatter.format(product.salePrice),
-                          theme.primaryColor,
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: _buildDetailMetric(
+                            'Selling Price',
+                            currencyFormatter.format(product.salePrice),
+                            theme.primaryColor,
+                          ),
                         ),
-                        _buildDetailMetric(
-                          'Unit Margin',
-                          '+${currencyFormatter.format(profit)} (${marginPercent.toStringAsFixed(0)}%)',
-                          const Color(0xFF10B981),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: _buildDetailMetric(
+                            'Unit Margin',
+                            '+${currencyFormatter.format(profit)} (${marginPercent.toStringAsFixed(0)}%)',
+                            const Color(0xFF10B981),
+                          ),
                         ),
                       ],
                     ),
@@ -307,15 +314,19 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
         Text(
           title,
           style: const TextStyle(fontSize: 11, color: Colors.grey, fontWeight: FontWeight.bold),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
         const SizedBox(height: 4),
         Text(
           val,
           style: TextStyle(
-            fontSize: 15,
+            fontSize: 14,
             fontWeight: FontWeight.bold,
             color: valColor,
           ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

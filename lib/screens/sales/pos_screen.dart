@@ -263,35 +263,34 @@ class _PosScreenState extends State<PosScreen> {
                   ],
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(
-                      children: [
-                        const Icon(Icons.shopping_bag_outlined, color: Colors.white),
-                        const SizedBox(width: 12),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              '${salesProvider.cartItems.length} Products Selected',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
+                    const Icon(Icons.shopping_bag_outlined, color: Colors.white),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            '${salesProvider.cartItems.length} Items',
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
                             ),
-                            Text(
-                              'Total Cost: ${currencyFormatter.format(salesProvider.grandTotal)}',
-                              style: const TextStyle(
-                                color: Colors.white70,
-                                fontSize: 11,
-                              ),
+                          ),
+                          Text(
+                            currencyFormatter.format(salesProvider.grandTotal),
+                            style: const TextStyle(
+                              color: Colors.white70,
+                              fontSize: 11,
                             ),
-                          ],
-                        ),
-                      ],
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
+                      ),
                     ),
+                    const SizedBox(width: 12),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
@@ -309,8 +308,9 @@ class _PosScreenState extends State<PosScreen> {
                         );
                       },
                       child: const Row(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text('View Cart', style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text('Cart', style: TextStyle(fontWeight: FontWeight.bold)),
                           SizedBox(width: 4),
                           Icon(Icons.arrow_forward, size: 16),
                         ],

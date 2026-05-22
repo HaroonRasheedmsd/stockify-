@@ -222,14 +222,17 @@ class _ReportsScreenState extends State<ReportsScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-            color: isDark ? Colors.blueGrey[300] : Colors.blueGrey[700],
+        Expanded(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: isDark ? Colors.blueGrey[300] : Colors.blueGrey[700],
+            ),
           ),
         ),
+        const SizedBox(width: 12),
         Text(
           val,
           style: TextStyle(

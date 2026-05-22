@@ -338,7 +338,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               mainAxisSpacing: 16,
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              childAspectRatio: 1.45,
+              childAspectRatio: 1.15,
               children: [
                 DashboardCard(
                   title: 'Today\'s Sales',

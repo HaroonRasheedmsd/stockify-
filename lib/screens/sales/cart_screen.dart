@@ -225,28 +225,37 @@ class _CartScreenState extends State<CartScreen> {
                           Icon(Icons.person_pin_outlined, color: theme.primaryColor),
                           const SizedBox(width: 12),
                           const Text(
-                            'Assign Customer:',
+                            'Customer:',
                             style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13),
                           ),
-                          const Spacer(),
-                          DropdownButton<Customer>(
-                            value: salesProvider.selectedCustomer,
-                            hint: const Text('Walk-in Customer'),
-                            onChanged: (Customer? val) {
-                              salesProvider.selectCustomer(val);
-                            },
-                            items: [
-                              const DropdownMenuItem<Customer>(
-                                value: null,
-                                child: Text('Walk-in Customer'),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: DropdownButton<Customer>(
+                                value: salesProvider.selectedCustomer,
+                                hint: const Text('Walk-in'),
+                                isExpanded: true,
+                                onChanged: (Customer? val) {
+                                  salesProvider.selectCustomer(val);
+                                },
+                                items: [
+                                  const DropdownMenuItem<Customer>(
+                                    value: null,
+                                    child: Text('Walk-in Customer'),
+                                  ),
+                                  ...customerProvider.customers.map((c) {
+                                    return DropdownMenuItem<Customer>(
+                                      value: c,
+                                      child: Text(
+                                        '${c.name} (${c.phone.substring(c.phone.length - 4)})',
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    );
+                                  }).toList()
+                                ],
                               ),
-                              ...customerProvider.customers.map((c) {
-                                return DropdownMenuItem<Customer>(
-                                  value: c,
-                                  child: Text('${c.name} (${c.phone.substring(c.phone.length - 4)})'),
-                                );
-                              }).toList()
-                            ],
+                            ),
                           ),
                         ],
                       ),
