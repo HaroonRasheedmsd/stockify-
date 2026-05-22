@@ -4,6 +4,7 @@ import '../../providers/supplier_provider.dart';
 import '../../models/supplier.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
+import 'supplier_detail_screen.dart';
 
 class SupplierListScreen extends StatefulWidget {
   const SupplierListScreen({Key? key}) : super(key: key);
@@ -245,6 +246,13 @@ class _SupplierListScreenState extends State<SupplierListScreen> {
                             return Card(
                               margin: const EdgeInsets.only(bottom: 10),
                               child: ListTile(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) => SupplierDetailScreen(supplier: sup),
+                                    ),
+                                  );
+                                },
                                 leading: CircleAvatar(
                                   backgroundColor: theme.primaryColor.withOpacity(0.08),
                                   child: Icon(Icons.local_shipping, color: theme.primaryColor),

@@ -4,6 +4,7 @@ import '../../providers/customer_provider.dart';
 import '../../models/customer.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_text_field.dart';
+import 'customer_detail_screen.dart';
 
 class CustomerListScreen extends StatefulWidget {
   const CustomerListScreen({Key? key}) : super(key: key);
@@ -231,6 +232,13 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                             return Card(
                               margin: const EdgeInsets.only(bottom: 10),
                               child: ListTile(
+                                onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) => CustomerDetailScreen(customer: cust),
+                                    ),
+                                  );
+                                },
                                 leading: CircleAvatar(
                                   backgroundColor: theme.primaryColor.withOpacity(0.08),
                                   child: Icon(Icons.person, color: theme.primaryColor),
